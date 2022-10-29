@@ -77,7 +77,10 @@ export default function Subscribe({conversions, abe_guild_data_db, guild_id, gui
 
         var account;
         try {
-            account = await window.ethereum.request({method: 'eth_accounts'})
+            // account = await window.ethereum.request({method: 'eth_accounts'})
+            let accounts = await window.ethereum.request({method: 'eth_requestAccounts'})
+            console.log("accounts: ", accounts)
+            account = accounts[0]
             console.log("got account: ", account)
         } catch {
             alert("error grabbing account")
