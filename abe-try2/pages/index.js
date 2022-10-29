@@ -13,7 +13,7 @@ export default function Home() {
 
       <main className={styles.main}>
         <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a> Installed tailwind
+          Welcome to <a href="https://nextjs.org">Next.js!</a> Installed chakra-ui/react, emotion/react, emotion/styled, framer-motion
         </h1>
 
         <p className={styles.description}>
