@@ -4,7 +4,7 @@ import DiscordProvider from 'next-auth/providers/discord'
 // https://discord.com/developers/docs/topics/oauth2#shared-resources-oauth2-scopes
 //const scopes = ['identify', 'guilds'].join(' ')
 const scopes = 'identify guilds'
-const devMode = true
+const devMode = false
 
 // NOTE: it is NOT possible to get guild channels from Oauth2 -- has to be done from a bot.
 
