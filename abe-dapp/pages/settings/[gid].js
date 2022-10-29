@@ -31,8 +31,6 @@ export async function getServerSideProps(context) {
 }
 
 export default function Settings({channels, guild_id, guild_name}) {
-    const [guildRoles, setGuildRoles] = useState([])
-    const [guildChannels, setGuildChannels] = useState([])
     // const [availableFeeds, setAvailableFeeds] = useState(["alpha-plus",
     //     "alpha",
     //     "solana",
@@ -43,13 +41,15 @@ export default function Settings({channels, guild_id, guild_name}) {
     const [availableFeeds, setAvailableFeeds] = useState([])
     const [publishedChannels, setPublishedChannels] = useState([])
     const [publishedRoles, setPublishedRoles] = useState([])
+    const [guildRoles, setGuildRoles] = useState([])
+    const [guildChannels, setGuildChannels] = useState([])
 
     let abe_guild_data_db
     useEffect(() => {
-        useAsyncEffect()
+        asyncEffect()
     }, [publishedChannels,publishedRoles])
 
-    const useAsyncEffect = async() => {
+    const asyncEffect = async() => {
         let response = await fetch("/api/abe-guilds-data?guild_id=" + String(guild_id), {
             method: "GET",
         })
@@ -154,20 +154,20 @@ export default function Settings({channels, guild_id, guild_name}) {
                                 <Flex direction="column" className='  mx-4 bg-cdark px-4 '>
                                     <h1>Available Feeds</h1>
                                     {availableFeeds.map((availableFeed) => (
-                                        <h1 className="text-align-left" style={{textAlign:"left"}}>{availableFeed}</h1>
+                                        <h1 key={availableFeed+"a"} className="text-align-left" style={{textAlign:"left"}}>{availableFeed}</h1>
                                     ))}
                                 </Flex>
 
                                 <Flex direction="column" className='mx-4 bg-cdark px-4'>
                                     <h1>Channel to publish in</h1>
                                     {availableFeeds.map((availableFeed) => (
-                                        <Menu>
+                                        <Menu key={availableFeed+"b"}>
                                             <MenuButton>
                                                 {publishedChannels[availableFeeds.indexOf(availableFeed)]}
                                             </MenuButton>
                                             <MenuList className='text-dark'>
                                                 {guildChannels.map((guildChannel) => (
-                                                    <MenuItem className='text-dark' style={{color:"navy"}} 
+                                                    <MenuItem key={guildChannel+"c"} className='text-dark' style={{color:"navy"}} 
                                                         onClick={() => {menuItemChannelHandler(guildChannel, availableFeed)}}>
                                                             
                                                             {guildChannel}
@@ -181,14 +181,14 @@ export default function Settings({channels, guild_id, guild_name}) {
                                 <Flex direction="column" className='mx-4 bg-cdark px-4'>
                                     <h1>Role to notify</h1>
                                     {availableFeeds.map((availableFeed) => (
-                                        <Menu>
+                                        <Menu key={availableFeed+"d"}>
                                             <MenuButton >
                                             {console.log("221 publishedChannels: ", publishedChannels)}
                                                 {publishedRoles[availableFeeds.indexOf(availableFeed)]}
                                             </MenuButton>
                                             <MenuList className='  py-4  '>
                                                 {guildRoles.map((guildRole) => (
-                                                    <MenuItem className=' py-4 ' style={{color:"navy"}}
+                                                    <MenuItem key={guildRole+"e"} className=' py-4 ' style={{color:"navy"}}
                                                         onClick={() => {menuItemRoleHandler(guildRole, availableFeed)}}>
                                                         {guildRole}
                                                     </MenuItem>

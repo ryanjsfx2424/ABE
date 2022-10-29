@@ -49,8 +49,11 @@ export default function Header() {
           >
             <Link href='/'>
               <a className='inline-flex items-start  md:mx-0 mx-auto  '>
-                <img
+                <Image
+                  alt="logo"
                   src='/logo@2x.png'
+                  width={256}
+                  height={46}
                   className={`w-24 h-auto  md:w-36 lg:w-36        `}
                 />
               </a>

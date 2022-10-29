@@ -100,7 +100,7 @@ export default function Dashboard({
                         onClick={() => signOut()}>Sign Out</button>
                       
                       {console.log("89 index: abe_guild_data_db: ", abe_guild_data_db)}
-                      {guilds.map((guild) => (<GuildCard guild={guild} abe_guild_data_db={abe_guild_data_db} conversions={conversions} />))}
+                      {guilds.map((guild) => (<GuildCard key={guild} guild={guild} abe_guild_data_db={abe_guild_data_db} conversions={conversions} />))}
                     </div>
                   </div>
               )

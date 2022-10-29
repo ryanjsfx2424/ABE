@@ -4,6 +4,7 @@ import Web3EthContract from 'web3-eth-contract'
 import abeContractABI from '../json/abe_v2_abi.json'
 import usdcGoerliContractABI from '../json/usdc_goerli_abi.json'
 import Link from 'next/link'
+import Image from 'next/image'
 import {
   ChakraProvider,
   Flex,
@@ -359,7 +360,7 @@ export default function Subscribe({conversions, abe_guild_data_db, guild_id, gui
             </div>
             <div className=' rounded-xl  py-6 border border-white border-opacity-20 text-center text-white bg-gradient-to-br  from-cblue2 via-cblue2 to-blue-500  '>
               <div className='flex text-center mx-auto  align-middle justify-center items-center  justify-items-center'>
-                <img src='./star.png' className='w-4 h-auto my-auto' />
+                <Image alt="star" src='/star.png' width={49} height={47} className="w-4 h-auto my-auto" />
                 <p className='text-3xl font-extrabold'>&nbsp; Standard </p>
               </div>
 
@@ -479,7 +480,7 @@ export default function Subscribe({conversions, abe_guild_data_db, guild_id, gui
                           
                           <MenuList style={{backgroundColor: "#25324C"}}>
                               {MonthTexts.map((monthText) => (
-                                <MenuItem onClick={() => {menuItemHandler(monthText)}}>{monthText}</MenuItem>
+                                <MenuItem key={monthText} onClick={() => {menuItemHandler(monthText)}}>{monthText}</MenuItem>
                               ))}
                           </MenuList>
                     
@@ -492,7 +493,7 @@ export default function Subscribe({conversions, abe_guild_data_db, guild_id, gui
                           </MenuButton>
                           <MenuList style={{backgroundColor: "rgb(59 130 246)"}}>
                               {MonthTexts.map((monthText) => (
-                                <MenuItem onClick={() => {menuItemHandler(monthText)}}>{monthText}</MenuItem>
+                                <MenuItem key={monthText} onClick={() => {menuItemHandler(monthText)}}>{monthText}</MenuItem>
                               ))}
                           </MenuList>
                       </Menu>
@@ -505,7 +506,7 @@ export default function Subscribe({conversions, abe_guild_data_db, guild_id, gui
                           </MenuButton>
                           <MenuList style={{backgroundColor: "#25324C"}}>
                               {MonthTexts.map((monthText) => (
-                                  <MenuItem onClick={() => {menuItemHandler(monthText)}}>{monthText}</MenuItem>
+                                  <MenuItem key={monthText} onClick={() => {menuItemHandler(monthText)}}>{monthText}</MenuItem>
                               ))}
                           </MenuList>
                       </Menu>
