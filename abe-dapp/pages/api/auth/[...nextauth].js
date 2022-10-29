@@ -51,6 +51,7 @@ export default NextAuth({
     }
     ),
   ],
+  secret: process.env.NEXT_PUBLIC_SECRET,
   callbacks: {
     async jwt({ token, account }) {
       // Persist the OAuth access_token and or the user id to the token right after signin
