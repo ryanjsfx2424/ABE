@@ -1,5 +1,4 @@
 import { useState, useEffect, useCallback } from 'react'
-import { useRouter } from 'next/router'
 import Head from 'next/head'
 import Header from '../../components/Header';
 import Login from '../../components/Login'
@@ -16,20 +15,22 @@ import {
     MenuOptionGroup,
     MenuDivider,
   } from '@chakra-ui/react'
+const devMode = true;
+
+import useSWR from 'swr'
 
 export async function getServerSideProps(context) {
     return {
         props: {
+            channels: context.query.channels,
             guild_id: context.query.gid,
-            guild_name: context.query.guild_name
+            guild_name: context.query.guild_name,
+            feeds_to_channels: context.query.feeds_to_channels
         }
     }
 }
 
-export default function Settings({guild_id, guild_name}) {
-    console.log("settings guild_id: ", guild_id)
-    console.log("settings guild_name: ", guild_name)
-
+export default function Settings({channels, guild_id, guild_name}) {
     // const [availableFeeds, setAvailableFeeds] = useState(["alpha-plus",
     //     "alpha",
     //     "solana",
@@ -53,10 +54,6 @@ export default function Settings({guild_id, guild_name}) {
             method: "GET",
         })
         abe_guild_data_db = await response.json()
-        console.log("abe_guild_data_db: ", abe_guild_data_db)
-        console.log("abe_guild_data_db.channels: ", abe_guild_data_db.channels)
-        console.log("abe_guild_data_db.roles: ", abe_guild_data_db.roles)
-        console.log("abe_guild_data_db.feeds_to_channels: ", abe_guild_data_db.feeds_to_channels)
 
         setGuildChannels(abe_guild_data_db.channels)
         setGuildRoles(abe_guild_data_db.roles)

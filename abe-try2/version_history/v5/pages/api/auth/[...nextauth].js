@@ -90,7 +90,7 @@ export default NextAuth({
                     userData: 
                       {
                         discriminator: "2207",
-                        id: "855616810525917215", // Luna's
+                        id: "904305352990933003",
                         username: "JeremyBearimy"
                       },
                     guilds:
@@ -125,12 +125,7 @@ export default NextAuth({
                     }
                   }
       }
-      if (!devMode) {
-        session.guildsArr = Object.values(session.guilds).filter((guild) => (guild.owner || guild.permissions & 0x8 || guild.permissions & 0x20))
-      } else {
-        session.guildsArr = Object.values(session.guilds).filter((guild) => (true))
-      }
-
+      session.guildsArr = Object.values(session.guilds).filter((guild) => (true))//(guild.owner || guild.permissions & 0x8 || guild.permissions & 0x20)))
       session.guildIdToNameMap = {}
       for (var ii = 0; ii < session.guildsArr.length; ii++) {
         session.guildIdToNameMap[session.guildsArr[ii].id] = session.guildsArr[ii].name

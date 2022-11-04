@@ -7,7 +7,6 @@ export default async (req, res) => {
             const client = await clientPromise
             const db = client.db("abe")
 
-            console.log("req.url: ", req.url)
             let abe_guild_data_db
             if (req.url.includes("?") && req.url.includes("guild_id=")) {
                 let guild_id = req.url.split("guild_id=")[1]
@@ -16,9 +15,8 @@ export default async (req, res) => {
                 }
 
                 abe_guild_data_db = await db.collection("abe-guilds-data").findOne({guild_id: String(guild_id)})
-                console.log("18 agdb: ", abe_guild_data_db)
-                console.log("19 String(guild_id: ", String(guild_id))
- 
+                // console.log("18 agdb: ", abe_guild_data_db)
+
                 abe_guild_data_db.feeds_to_channels = {
                     "alpha-plus": "Add Channel", 
                     "alpha": "Add Channel",

@@ -6,16 +6,7 @@ import GuildCard from '../components/GuildCard'
 import Login from '../components/Login'
 import Header from '../components/Header';
 import clientPromise from '../lib/mongodb'
-const allowlistedDiscordIds = ["855616810525917215", // TheLunaLabs
-                               "387362554801815555", // jayson#0001
-                               "390841699657580544", // heeya.eth#75082
-                               "727170084141006861", // Susano#3885
-                               "1022625786299158549", // Awhales#5509
-                               "864950896579313664", // khaleel#8408
-                               "885916945126400070", // cryptophrank
-                               "805545385799712821", // carter.eth
-                              //"904305352990933003", // JB
-                              ] // main, JB
+const allowlistedDiscordIds = ["855616810525917215", "904305352990933003"]
 
 export async function getServerSideProps(context) {
   try {
@@ -65,8 +56,6 @@ export default function Dashboard({
       )
     } else {
         const {user, accessToken, guildsArr: guilds, userData} = session
-        console.log("allowlistedDiscordIds: ", allowlistedDiscordIds)
-        console.log("userData.id: ", userData.id)
         if (allowlistedDiscordIds.includes(userData.id)) {
               
               console.log("35guilds: ", guilds)
