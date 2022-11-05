@@ -20,19 +20,29 @@ export default async (req, res) => {
                 console.log("19 String(guild_id: ", String(guild_id))
  
                 abe_guild_data_db.feeds_to_channels = {
+                    "daily": "Add Channel",
                     "alpha-plus": "Add Channel", 
                     "alpha": "Add Channel",
                     "solana": "Add Channel",
                     "daos": "Add Channel",
-                    "nft-tools": "Add Channel"
+                    "nft-tools": "Add Channel",
+                    "aptos": "Add Channel",
+                    "premint": "Add Channel",
+                    "highlight": "Add Channel",
+                    "artist": "Add Channel"
                 }
 
                 abe_guild_data_db.feeds_to_roles = {
+                    "daily": "Add Role",
                     "alpha-plus": "Add Role", 
                     "alpha": "Add Role",
                     "solana": "Add Role",
                     "daos": "Add Role",
-                    "nft-tools": "Add Role"
+                    "nft-tools": "Add Role",
+                    "aptos": "Add Role",
+                    "premint": "Add Role",
+                    "highlight": "Add Role",
+                    "artist": "Add Role"
                 }
 
                 if (abe_guild_data_db.hasOwnProperty("subscribed_channel_feed_map") && abe_guild_data_db["subscribed_channel_feed_map"]) {
