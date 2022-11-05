@@ -35,7 +35,7 @@ export default function Subscribe({conversions, abe_guild_data_db, guild_id, gui
   const [isSubscribed, setIsSubscribed] = useState(false)
   const [monthInd, setMonthInd] = useState(0)
 
-  const ABE_INVITE_LINK = "https://discord.com/oauth2/authorize?client_id=1014177171008409660&permissions=19456&scope=bot";
+  const ABE_INVITE_LINK = "https://discord.com/api/oauth2/authorize?client_id=1014177171008409660&permissions=183296&scope=bot";
 
   // console.log("20 section3b guild_id: ", guild_id)
 
@@ -533,7 +533,7 @@ export default function Subscribe({conversions, abe_guild_data_db, guild_id, gui
                     <Link href={{
                       pathname: '/settings/' + guild_id,
                       query: {
-                          guild_name: guild.name
+                          guild_name: guild_name
                       }}}>Settings</Link>
                   </div>
               </div>

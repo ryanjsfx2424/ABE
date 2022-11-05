@@ -39,7 +39,7 @@ export default function GuildCard(props) {
         }
     }
 
-    const ABE_INVITE_LINK = "https://discord.com/oauth2/authorize?client_id=1014177171008409660&permissions=19456&scope=bot";
+    const ABE_INVITE_LINK = "https://discord.com/api/oauth2/authorize?client_id=1014177171008409660&permissions=183296&scope=bot";
 
     return (
         <ChakraProvider>
