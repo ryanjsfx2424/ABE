@@ -23,26 +23,30 @@ export default async (req, res) => {
                     "daily": "Add Channel",
                     "alpha-plus": "Add Channel", 
                     "alpha": "Add Channel",
+                    "might-be-something": "Add Channel",
                     "solana": "Add Channel",
                     "daos": "Add Channel",
                     "nft-tools": "Add Channel",
                     "aptos": "Add Channel",
                     "premint": "Add Channel",
                     "highlight": "Add Channel",
-                    "artist": "Add Channel"
+                    "artist": "Add Channel",
+                    "vc-firms": "Add Channel"
                 }
 
                 abe_guild_data_db.feeds_to_roles = {
                     "daily": "Add Role",
                     "alpha-plus": "Add Role", 
                     "alpha": "Add Role",
+                    "might-be-something": "Add Role",
                     "solana": "Add Role",
                     "daos": "Add Role",
                     "nft-tools": "Add Role",
                     "aptos": "Add Role",
                     "premint": "Add Role",
                     "highlight": "Add Role",
-                    "artist": "Add Role"
+                    "artist": "Add Role",
+                    "vc-firms": "Add Role"
                 }
 
                 if (abe_guild_data_db.hasOwnProperty("subscribed_channel_feed_map") && abe_guild_data_db["subscribed_channel_feed_map"]) {
