@@ -1,8 +1,10 @@
 import { useState, useEffect, Component } from 'react';
 import Web3 from 'web3'
 import Web3EthContract from 'web3-eth-contract'
-import abeContractABI from '../json/abe_v2_abi.json'
-import usdcGoerliContractABI from '../json/usdc_goerli_abi.json'
+// import abeContractABI from '../json/abe_v2_abi.json'
+import abeContractABI from '../json/abe_v3_abi.json'
+// import usdcGoerliContractABI from '../json/usdc_goerli_abi.json'
+import usdcContractABI from '../json/usdc_abi.json'
 import Link from 'next/link'
 import Image from 'next/image'
 import {
@@ -19,12 +21,16 @@ import {
 } from '@chakra-ui/react'
 import Header from '../components/Header';
 
-const CHAIN_ID = 5
-const CHAIN_NAME = "GOERLI"
+// const CHAIN_ID = 5
+const CHAIN_ID = 1
+// const CHAIN_NAME = "GOERLI"
+const CHAIN_NAME = "ETH"
 // const ABE_CONTRACT_ADDRESS = "0xf6FDF36e31342440BD2A03e7cd63DeA165C578C9"
-const ABE_CONTRACT_ADDRESS = "0x7694E33372b98751fbDc9758fC29BF55B6Ff2e1f"
-const USDC_GOERLI_CONTRACT_ADDRESS_PROXY = "0x07865c6E87B9F70255377e024ace6630C1Eaa37F" // this proxies the below
-const USDC_GOERLI_CONTRACT_ADDRESS = "0xe27658a36cA8A59fE5Cc76a14Bde34a51e587ab4"
+// const ABE_CONTRACT_ADDRESS = "0x7694E33372b98751fbDc9758fC29BF55B6Ff2e1f"
+const ABE_CONTRACT_ADDRESS = "0xf6FDF36e31342440BD2A03e7cd63DeA165C578C9"
+// const USDC_GOERLI_CONTRACT_ADDRESS_PROXY = "0x07865c6E87B9F70255377e024ace6630C1Eaa37F" // this proxies the below
+// const USDC_GOERLI_CONTRACT_ADDRESS = "0xe27658a36cA8A59fE5Cc76a14Bde34a51e587ab4"
+const USDC_CONTRACT_ADDRESS_PROXY = "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48"
 const WEI_PER_ETH = 1e18
 const WEI_PER_USDC = 1e6
 
@@ -131,14 +137,14 @@ export default function Subscribe({conversions, abe_guild_data_db, guild_id, gui
       const web3 = new Web3(window.ethereum);
 
       const abeSmartContractObj = new Web3EthContract(abeContractABI, ABE_CONTRACT_ADDRESS);
-      let usdcGoerliSmartContractObj
+      let usdcSmartContractObj
       let allowance
       if (type === "usdc") {
         cost = String(Math.round(cost*WEI_PER_USDC))
-        usdcGoerliSmartContractObj = new Web3EthContract(usdcGoerliContractABI, USDC_GOERLI_CONTRACT_ADDRESS_PROXY);
+        usdcSmartContractObj = new Web3EthContract(usdcContractABI, USDC_CONTRACT_ADDRESS_PROXY);
         
         try {
-          allowance = await usdcGoerliSmartContractObj.methods.allowance(window.ethereum.selectedAddress, ABE_CONTRACT_ADDRESS).call()
+          allowance = await usdcSmartContractObj.methods.allowance(window.ethereum.selectedAddress, ABE_CONTRACT_ADDRESS).call()
         } catch (err) {
           console.log("89 allowance err: ", err)
           let message = "😥 Something went wrong checking usdc allowance"
@@ -152,7 +158,7 @@ export default function Subscribe({conversions, abe_guild_data_db, guild_id, gui
 
           let gasLimitEstimate
           try {
-              gasLimitEstimate = await usdcGoerliSmartContractObj.methods.approve(ABE_CONTRACT_ADDRESS, maxCost).estimateGas({
+              gasLimitEstimate = await usdcSmartContractObj.methods.approve(ABE_CONTRACT_ADDRESS, maxCost).estimateGas({
                   from: window.ethereum.selectedAddress,
                   value: String(0),
               })
@@ -176,10 +182,10 @@ export default function Subscribe({conversions, abe_guild_data_db, guild_id, gui
           console.log("gasPriceEstimate approve: ", gasPriceEstimate)
 
           try {
-              await usdcGoerliSmartContractObj.methods.approve(ABE_CONTRACT_ADDRESS, maxCost).send({
+              await usdcSmartContractObj.methods.approve(ABE_CONTRACT_ADDRESS, maxCost).send({
                   gasLimit: String(Math.round(1.2 * gasLimitEstimate)),
                   gasPrice: String(Math.round(1.2 * gasPriceEstimate)),
-                  to: USDC_GOERLI_CONTRACT_ADDRESS_PROXY,
+                  to: USDC_CONTRACT_ADDRESS_PROXY,
                   from: window.ethereum.selectedAddress,
                   value: String(0)
               })
@@ -213,8 +219,8 @@ export default function Subscribe({conversions, abe_guild_data_db, guild_id, gui
         try {
             console.log("address: ", window.ethereum.selectedAddress)
             console.log("cost usdc: ", cost)
-            console.log("contract: ", USDC_GOERLI_CONTRACT_ADDRESS_PROXY)
-            gasLimitEstimate = await abeSmartContractObj.methods.subscribeToken_Hd16(USDC_GOERLI_CONTRACT_ADDRESS_PROXY, cost).estimateGas({
+            console.log("contract: ", USDC_CONTRACT_ADDRESS_PROXY)
+            gasLimitEstimate = await abeSmartContractObj.methods.subscribeToken_Hd16(USDC_CONTRACT_ADDRESS_PROXY, cost).estimateGas({
                 from: window.ethereum.selectedAddress,
                 value: String(0),
             })
@@ -225,9 +231,7 @@ export default function Subscribe({conversions, abe_guild_data_db, guild_id, gui
             return {success: false, message: message, err: err}
         }
       }
-      // above doesn't work for GOERLI. Might work on eth, we'll see.
-      // gasLimitEstimate = 120000
-      
+
       console.log("got gasLimitEstimate! ", gasLimitEstimate);
       console.log({
         gasLimitEstimate: gasLimitEstimate,
@@ -269,7 +273,7 @@ export default function Subscribe({conversions, abe_guild_data_db, guild_id, gui
         }
       } else if (type === "usdc") {
         try {
-            const receipt = await abeSmartContractObj.methods.subscribeToken_Hd16(USDC_GOERLI_CONTRACT_ADDRESS_PROXY, cost).send({
+            const receipt = await abeSmartContractObj.methods.subscribeToken_Hd16(USDC_CONTRACT_ADDRESS_PROXY, cost).send({
                 gasLimit: String(Math.round(1.2 * gasLimitEstimate)),
                 gasPrice: String(Math.round(1.2 * gasPriceEstimate)),
                 to: ABE_CONTRACT_ADDRESS,
