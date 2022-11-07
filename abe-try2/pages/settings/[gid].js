@@ -136,8 +136,8 @@ export default function Settings({guild_id, guild_name}) {
                         <div className='  max-w-2xl sm:px-6   px-4 text-center    mx-auto  font-body    lg:max-w-4xl lg:px-12 mb-8 '
                         >
                             <Flex direction="column">
-                                <h1 className='text-xl'>Guild Id: {guild_id}</h1>
-                                <h1 className='text-xl'>{guild_name}</h1>
+                                <h1 className='text-xl text-white'>Guild Id: {guild_id}</h1>
+                                <h1 className='text-xl text-white'>{guild_name}</h1>
 
                                 {/* <Link href="/" width={38}>
                                     <a>
@@ -199,6 +199,20 @@ export default function Settings({guild_id, guild_name}) {
                                     ))}
                                 </Flex>
 
+                            </Flex>
+                            <Flex direction="column">
+                                <h1 className='text-xl text-white py-4' style={{textAlign: "left"}}>Note: if you cannot see the channel you want, make sure the bot has the following permissions in that channel: <br />(1) view channel, <br />(2) send messages, <br />(3) embed links, <br />(4) attach files, <br />(5) mention everyone, here, and all roles.</h1>
+
+                                {/* <Link href="/" width={38}>
+                                    <a>
+                                        <Image
+                                            src={abePfp}
+                                            alt="abe pfp"
+                                            width={38}
+                                            height={38}
+                                        />
+                                    </a>
+                                </Link> */}
                             </Flex>
                         </div>
                 </ChakraProvider>
