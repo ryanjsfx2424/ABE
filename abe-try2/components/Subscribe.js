@@ -4,12 +4,13 @@ import Web3EthContract from 'web3-eth-contract'
 // import abeContractABI from '../json/abe_v2_abi.json'
 import abeContractABI from '../json/abe_v3_abi.json'
 // import usdcGoerliContractABI from '../json/usdc_goerli_abi.json'
-import usdcContractABI from '../json/usdc_abi.json'
+import usdcContractABI from '../json/usdc_oz_abi.json'
 import Link from 'next/link'
 import Image from 'next/image'
 import {
   ChakraProvider,
   Flex,
+	Spinner,
   Menu,
   MenuButton,
   MenuList,
@@ -19,6 +20,7 @@ import {
   MenuOptionGroup,
   MenuDivider,
 } from '@chakra-ui/react'
+import ClipLoader from "react-spinners/ClipLoader";
 import Header from '../components/Header';
 
 // const CHAIN_ID = 5
@@ -523,7 +525,34 @@ export default function Subscribe({conversions, abe_guild_data_db, guild_id, gui
                               ))}
                           </MenuList>
                       </Menu>
-                  
+                      {isButtonDisabled &&
+                      <>
+                        {/* <Spinner color="#fff" size="xs" /> */}
+                        <ClipLoader
+                          color="transparent"
+                          loading="true"
+                          size={150}
+                          aria-label="Loading Spinner"
+                          data-testid="loader"
+                        />
+                        <ClipLoader
+                          color="white"
+                          loading="true"
+                          size={150}
+                          aria-label="Loading Spinner"
+                          data-testid="loader"
+                          cssOverride={{margin: "auto"}}
+                        />
+                        <ClipLoader
+                          color="transparent"
+                          loading="true"
+                          size={150}
+                          aria-label="Loading Spinner"
+                          data-testid="loader"
+                          cssOverride={{margin: "auto"}}
+                        />
+                      </>
+                      }
               </div>
           :
               <div className=' grid lg:grid-cols-3 gap-8 grid-cols-1 '>
