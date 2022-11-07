@@ -17,7 +17,6 @@ import {
     MenuOptionGroup,
     MenuDivider,
   } from '@chakra-ui/react'
-import { Main } from 'next/document'
 
 export async function getServerSideProps(context) {
     return {
