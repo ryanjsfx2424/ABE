@@ -9,6 +9,7 @@ import MainContent from '../components/MainContent';
 import clientPromise from '../lib/mongodb'
 const allowlistedDiscordIds = ["855616810525917215", // TheLunaLabs
                                "885916945126400070", // cryptophrank
+                               "303484525533462528", // tarzan.smol
                                "387362554801815555", // jayson#0001
                                "390841699657580544", // heeya.eth#75082
                                "727170084141006861", // Susano#3885
