@@ -43,6 +43,7 @@ export default function Settings({guild_id, guild_name}) {
     const [publishedRoles, setPublishedRoles] = useState([])
     const [guildRoles, setGuildRoles] = useState([])
     const [guildChannels, setGuildChannels] = useState([])
+    const [botInGuild, setBotInGuild] = useState(false)
 
     let abe_guild_data_db
     useEffect(() => {
@@ -58,6 +59,10 @@ export default function Settings({guild_id, guild_name}) {
         console.log("abe_guild_data_db.channels: ", abe_guild_data_db.channels)
         console.log("abe_guild_data_db.roles: ", abe_guild_data_db.roles)
         console.log("abe_guild_data_db.feeds_to_channels: ", abe_guild_data_db.feeds_to_channels)
+
+        if (abe_guild_data_db[ii].hasOwnProperty("in") && abe_guild_data_db[ii]["in"] === true) {
+            setBotInGuild(true)
+        }
 
         if (abe_guild_data_db.channels !== null) {
             setGuildChannels(abe_guild_data_db.channels)
@@ -143,82 +148,74 @@ export default function Settings({guild_id, guild_name}) {
                             <Flex direction="column">
                                 <h1 className='text-xl text-white'>Guild Id: {guild_id}</h1>
                                 <h1 className='text-xl text-white'>{guild_name}</h1>
-
-                                {/* <Link href="/" width={38}>
-                                    <a>
-                                        <Image
-                                            src={abePfp}
-                                            alt="abe pfp"
-                                            width={38}
-                                            height={38}
-                                        />
-                                    </a>
-                                </Link> */}
                             </Flex>
                             
-                            <Flex direction="row" justifyContent="center" className="  mx-auto text-white pt-8 text-xl">
-                                <Flex direction="column" className='  mx-4 bg-cdark px-4 '>
-                                    <h1>Available Feeds</h1>
-                                    {availableFeeds.map((availableFeed) => (
-                                        <h1 key={availableFeed+"a"} className="text-align-left" style={{textAlign:"left"}}>{availableFeed}</h1>
-                                    ))}
-                                </Flex>
+                            {botInGuild ?
 
-                                <Flex direction="column" className='mx-4 bg-cdark px-4'>
-                                    <h1>Channel to publish in</h1>
-                                    {availableFeeds.map((availableFeed) => (
-                                        <Menu key={availableFeed+"b"}>
-                                            <MenuButton>
-                                                {publishedChannels[availableFeeds.indexOf(availableFeed)]}
-                                            </MenuButton>
-                                            <MenuList className='text-dark'>
-                                                {guildChannels.map((guildChannel) => (
-                                                    <MenuItem key={guildChannel+"c"} className='text-dark' style={{color:"navy"}} 
-                                                        onClick={() => {menuItemChannelHandler(guildChannel, availableFeed)}}>
-                                                            
-                                                            {guildChannel}
-                                                    </MenuItem>
-                                                ))}
-                                            </MenuList>
-                                        </Menu>
-                                    ))}
-                                </Flex>
+                                <>
+                                    <Flex direction="row" justifyContent="center" className="  mx-auto text-white pt-8 text-xl">
+                                        <Flex direction="column" className='  mx-4 bg-cdark px-4 '>
+                                            <h1>Available Feeds</h1>
+                                            {availableFeeds.map((availableFeed) => (
+                                                <h1 key={availableFeed+"a"} className="text-align-left" style={{textAlign:"left"}}>{availableFeed}</h1>
+                                            ))}
+                                        </Flex>
 
-                                <Flex direction="column" className='mx-4 bg-cdark px-4'>
-                                    <h1>Role to notify</h1>
-                                    {availableFeeds.map((availableFeed) => (
-                                        <Menu key={availableFeed+"d"}>
-                                            <MenuButton >
-                                            {console.log("221 publishedChannels: ", publishedChannels)}
-                                                {publishedRoles[availableFeeds.indexOf(availableFeed)]}
-                                            </MenuButton>
-                                            <MenuList className='  py-4  '>
-                                                {guildRoles.map((guildRole) => (
-                                                    <MenuItem key={guildRole+"e"} className=' py-4 ' style={{color:"navy"}}
-                                                        onClick={() => {menuItemRoleHandler(guildRole, availableFeed)}}>
-                                                        {guildRole}
-                                                    </MenuItem>
-                                                ))}
-                                            </MenuList>
-                                        </Menu>
-                                    ))}
-                                </Flex>
+                                        <Flex direction="column" className='mx-4 bg-cdark px-4'>
+                                            <h1>Channel to publish in</h1>
+                                            {availableFeeds.map((availableFeed) => (
+                                                <Menu key={availableFeed+"b"}>
+                                                    <MenuButton>
+                                                        {publishedChannels[availableFeeds.indexOf(availableFeed)]}
+                                                    </MenuButton>
+                                                    <MenuList className='text-dark'>
+                                                        {guildChannels.map((guildChannel) => (
+                                                            <MenuItem key={guildChannel+"c"} className='text-dark' style={{color:"navy"}} 
+                                                                onClick={() => {menuItemChannelHandler(guildChannel, availableFeed)}}>
+                                                                    
+                                                                    {guildChannel}
+                                                            </MenuItem>
+                                                        ))}
+                                                    </MenuList>
+                                                </Menu>
+                                            ))}
+                                        </Flex>
 
-                            </Flex>
-                            <Flex direction="column">
-                                <h1 className='text-xl text-white py-4' style={{textAlign: "left"}}>Note: if you cannot see the channel you want, make sure the bot has the following permissions in that channel: <br />(1) view channel, <br />(2) send messages, <br />(3) embed links, <br />(4) attach files, <br />(5) mention everyone, here, and all roles.</h1>
+                                        <Flex direction="column" className='mx-4 bg-cdark px-4'>
+                                            <h1>Role to notify</h1>
+                                            {availableFeeds.map((availableFeed) => (
+                                                <Menu key={availableFeed+"d"}>
+                                                    <MenuButton >
+                                                    {console.log("221 publishedChannels: ", publishedChannels)}
+                                                        {publishedRoles[availableFeeds.indexOf(availableFeed)]}
+                                                    </MenuButton>
+                                                    <MenuList className='  py-4  '>
+                                                        {guildRoles.map((guildRole) => (
+                                                            <MenuItem key={guildRole+"e"} className=' py-4 ' style={{color:"navy"}}
+                                                                onClick={() => {menuItemRoleHandler(guildRole, availableFeed)}}>
+                                                                {guildRole}
+                                                            </MenuItem>
+                                                        ))}
+                                                    </MenuList>
+                                                </Menu>
+                                            ))}
+                                        </Flex>
 
-                                {/* <Link href="/" width={38}>
-                                    <a>
-                                        <Image
-                                            src={abePfp}
-                                            alt="abe pfp"
-                                            width={38}
-                                            height={38}
-                                        />
-                                    </a>
-                                </Link> */}
-                            </Flex>
+                                    </Flex>
+                                    <Flex direction="column">
+                                        <h1 className='text-xl text-white py-4' style={{textAlign: "left"}}>Note: if you cannot see the channel you want, make sure the bot has the following permissions in that channel: <br />(1) view channel, <br />(2) send messages, <br />(3) embed links, <br />(4) attach files, <br />(5) mention everyone, here, and all roles.</h1>
+                                    </Flex>
+                                </>
+                            :
+                            <>
+                                <h1>We didn't see ABE in your server - please try adding ABE again.</h1>
+                                <a href={ABE_INVITE_LINK + "&guild_id=" + guild.id} 
+                                >
+                                Add
+                                </a> 
+
+                            </>
+                            }
                         </div>
                 </ChakraProvider>
             </div>
