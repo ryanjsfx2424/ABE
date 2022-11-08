@@ -59,11 +59,17 @@ export default function Settings({guild_id, guild_name}) {
         console.log("abe_guild_data_db.roles: ", abe_guild_data_db.roles)
         console.log("abe_guild_data_db.feeds_to_channels: ", abe_guild_data_db.feeds_to_channels)
 
-        setGuildChannels(abe_guild_data_db.channels)
-        setGuildRoles(abe_guild_data_db.roles)
+        if (abe_guild_data_db.channels !== null) {
+            setGuildChannels(abe_guild_data_db.channels)
+        }
+        if (abe_guild_data_db.channels !== null) {
+            setGuildRoles(abe_guild_data_db.roles)
+        }
 
         let availableFeedsLocal = Array.from(Object.keys(abe_guild_data_db.feeds_to_channels))
-        setAvailableFeeds(availableFeedsLocal)
+        if (availableFeedsLocal !== null) {
+            setAvailableFeeds(availableFeedsLocal)
+        }
         
         if (String(publishedChannels) === String([])) {
             let publishedChannelsLocal = []
