@@ -18,6 +18,8 @@ import {
     MenuDivider,
   } from '@chakra-ui/react'
 
+const ABE_INVITE_LINK = "https://discord.com/api/oauth2/authorize?client_id=1014177171008409660&permissions=183296&scope=bot";
+
 export async function getServerSideProps(context) {
     return {
         props: {
@@ -60,7 +62,7 @@ export default function Settings({guild_id, guild_name}) {
         console.log("abe_guild_data_db.roles: ", abe_guild_data_db.roles)
         console.log("abe_guild_data_db.feeds_to_channels: ", abe_guild_data_db.feeds_to_channels)
 
-        if (abe_guild_data_db[ii].hasOwnProperty("in") && abe_guild_data_db[ii]["in"] === true) {
+        if (abe_guild_data_db.hasOwnProperty("in") && abe_guild_data_db["in"] === true) {
             setBotInGuild(true)
         }
 
@@ -208,8 +210,8 @@ export default function Settings({guild_id, guild_name}) {
                                 </>
                             :
                             <>
-                                <h1>We didn't see ABE in your server - please try adding ABE again.</h1>
-                                <a href={ABE_INVITE_LINK + "&guild_id=" + guild.id} 
+                                <h1 className="text-xl text-white py-6">We didn't see ABE in your server - please try adding ABE again.</h1>
+                                <a href={ABE_INVITE_LINK + "&guild_id=" + guild_id} className="rounded-xl py-2 px-4 text-xl my-4 border border-white border-opacity-20 text-center text-white bg-gradient-to-t  from-gr1 via-gr2 to-gr3 hover:bg-white-600 transition duration-75"
                                 >
                                 Add
                                 </a> 
