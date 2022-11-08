@@ -210,7 +210,7 @@ export default function Settings({guild_id, guild_name}) {
                                 </>
                             :
                             <>
-                                <h1 className="text-xl text-white py-6">We didn't see ABE in your server - please try adding ABE again.</h1>
+                                <h1 className="text-xl text-white py-6">We did not see ABE in your server - please try adding ABE again.</h1>
                                 <a href={ABE_INVITE_LINK + "&guild_id=" + guild_id} className="rounded-xl py-2 px-4 text-xl my-4 border border-white border-opacity-20 text-center text-white bg-gradient-to-t  from-gr1 via-gr2 to-gr3 hover:bg-white-600 transition duration-75"
                                 >
                                 Add
