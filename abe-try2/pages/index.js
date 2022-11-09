@@ -18,6 +18,7 @@ const allowlistedDiscordIds = ["855616810525917215", // TheLunaLabs
                                "885916945126400070", // cryptophrank
                                "805545385799712821", // carter.eth
                                "903135744300830761", // qntm - og labz
+                               "853450196015775754", // og labz; qntm #5000
                               //"904305352990933003", // JB
                               ] // main, JB
 
