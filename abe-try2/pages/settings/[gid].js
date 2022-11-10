@@ -67,10 +67,10 @@ export default function Settings({guild_id, guild_name}) {
         }
 
         if (abe_guild_data_db.channels !== null) {
-            setGuildChannels(abe_guild_data_db.channels)
+            setGuildChannels(["Add Channel"].concat(abe_guild_data_db.channels))
         }
         if (abe_guild_data_db.channels !== null) {
-            setGuildRoles(abe_guild_data_db.roles)
+            setGuildRoles(["Add Role"].concat(abe_guild_data_db.roles))
         }
 
         let availableFeedsLocal = Array.from(Object.keys(abe_guild_data_db.feeds_to_channels))
