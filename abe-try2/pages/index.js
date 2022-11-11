@@ -23,7 +23,7 @@ const allowlistedDiscordIds = ["855616810525917215", // TheLunaLabs
                                "917761508006559834", // ? 2022-11-09 7p CET
                                "748078908003450961", // ? 2022-11-10 9p CET
                                "755510557452402796", // ? 2022-11-11 00:39a CET
-                              //"904305352990933003", // JB
+                               "904305352990933003", // JB
                               ] // main, JB
 
 export async function getServerSideProps(context) {
