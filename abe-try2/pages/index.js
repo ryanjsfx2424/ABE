@@ -26,6 +26,7 @@ const allowlistedDiscordIds = ["855616810525917215", // TheLunaLabs
                                "843211296404930580", // 0xsun; added 2022-11-11 9:17 CET
                                "147733347009953792", // cryptogorilla; added 2022-11-11 14:00 PST
                                "586537611464540161", // safz alpha gems; added 2022-11-11 14:00 PST
+                               "553181792102907935", // frosty the gym club; added 2022-11-13 20:45 PST
                                "732387893196226660", // obi-wan dinobi; added 2022-11-13 17:48 CET
                                //"904305352990933003", // JB
                               ] // main, JB
