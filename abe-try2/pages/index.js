@@ -30,6 +30,8 @@ const allowlistedDiscordIds = ["855616810525917215", // TheLunaLabs
                                "755510557452402796", // added asked by tarzan; added 2022-11-14 20:45 PST
                                "864950896579313664", // added infinity dao for khaleel; added 2022-11-15 6:45 PST
                                "732387893196226660", // obi-wan dinobi; added 2022-11-13 17:48 CET
+                               "696648129658880020", // from tarzan; 2022-11-17 9:30a CET
+                               "157566849268187136", // from tarzan; 2022-11-17 9:30a CET
                                //"904305352990933003", // JB
                               ] // main, JB
 
