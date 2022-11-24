@@ -32,6 +32,7 @@ const allowlistedDiscordIds = ["855616810525917215", // TheLunaLabs
                                "732387893196226660", // obi-wan dinobi; added 2022-11-13 17:48 CET
                                "696648129658880020", // from tarzan; 2022-11-17 9:30a CET
                                "157566849268187136", // from tarzan; 2022-11-17 9:30a CET
+                               "362865355833475072", // from cryptophrank NFTNate; 2022-11-24 13:30a PST
                                "563729224352006163", // from cryptophrank lordmarlborough; 2022-11-18 6:30a PST
                                "280799503454306304", // from cryptophrank natentate; 2022-11-18 6:30a PST
                                //"904305352990933003", // JB
