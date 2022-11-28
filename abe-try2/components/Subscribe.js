@@ -51,9 +51,9 @@ export default function Subscribe({conversions, abe_guild_data_db, guild_id, gui
 
   const usdCosts = [100, 250, 300]
   const usdCostsToNames = {100:"Basic", 250:"Standard", 300:"Premium"}
-  const MonthTexts = ["1 Month", "3 Months (5% off)", "6 Months (10% off)", "9 Months (15% off)", "12 Months (20% off)", "Trial"]
-  const MonthFractions = [1, 0.95, 0.9, 0.85, 0.8, 0]
-  const MonthNums = [1, 3, 6, 9, 12, 0]
+  const MonthTexts = ["1 Month", "3 Months (5% off)", "6 Months (10% off)", "9 Months (15% off)", "12 Months (20% off)"]
+  const MonthFractions = [1, 0.95, 0.9, 0.85, 0.8]
+  const MonthNums = [1, 3, 6, 9, 12]
 
   let ethCosts = []
   for (var ii = 0; ii < usdCosts.length; ii++) {
@@ -371,7 +371,7 @@ export default function Subscribe({conversions, abe_guild_data_db, guild_id, gui
             </div>{' '}
             <div className='lg:hidden block rounded-xl py-2 text-xl my-4 border border-white border-opacity-20 text-center text-white bg-gradient-to-t  from-gr1 via-gr2 to-gr3  '>
               ${(usdCosts[0]*MonthFractions[monthInd]*MonthNums[monthInd]).toFixed(2)}
-              <p>usdc/month</p>
+              <p>usdc</p>
             </div>
             <div className=' rounded-xl  py-6 border border-white border-opacity-20 text-center text-white bg-gradient-to-br  from-cblue2 via-cblue2 to-blue-500  '>
               <div className='flex text-center mx-auto  align-middle justify-center items-center  justify-items-center'>
@@ -399,7 +399,7 @@ export default function Subscribe({conversions, abe_guild_data_db, guild_id, gui
             </div>{' '}
             <div className=' lg:hidden block rounded-xl text-2xl font-bold py-2 my-4 border border-white border-opacity-20 text-center text-white bg-gradient-to-br  from-cblue2 via-cblue2 to-blue-500   '>
               ${(usdCosts[1]*MonthFractions[monthInd]*MonthNums[monthInd]).toFixed(2)}
-              <p>usdc/month</p>
+              <p>usdc</p>
             </div>
             <div className=' rounded-xl py-6  border border-white border-opacity-20 text-center text-white bg-gradient-to-t  from-gr1 via-gr2 to-gr3  '>
               <p className='text-3xl font-extrabold'>Premium</p>
@@ -432,7 +432,7 @@ export default function Subscribe({conversions, abe_guild_data_db, guild_id, gui
             </div>{' '}
             <div className='lg:hidden block rounded-xl py-2 text-xl my-4 border border-white border-opacity-20 text-center text-white bg-gradient-to-t  from-gr1 via-gr2 to-gr3  '>
               ${(usdCosts[2]*MonthFractions[monthInd]*MonthNums[monthInd]).toFixed(2)}
-              <p>usdc/month</p>
+              <p>usdc</p>
             </div>
           </div>
 
@@ -440,19 +440,19 @@ export default function Subscribe({conversions, abe_guild_data_db, guild_id, gui
             <button onClick={() => {buttonHandler(usdCosts[0], MonthFractions[monthInd], MonthNums[monthInd], "usdc", "basic")}} disabled={isButtonDisabled}>
               <div className=' lg:block hidden  rounded-xl py-2 text-xl my-4 border border-white border-opacity-20 text-center text-white bg-gradient-to-t  from-gr1 via-gr2 to-gr3  '>
                 ${(usdCosts[0]*MonthFractions[monthInd]*MonthNums[monthInd]).toFixed(2)}
-                <p>usdc/month</p>
+                <p>usdc</p>
               </div>
             </button>
             <button onClick={() => {buttonHandler(usdCosts[1], MonthFractions[monthInd], MonthNums[monthInd], "usdc", "standard")}} disabled={isButtonDisabled}>
               <div className=' lg:block hidden  rounded-xl text-2xl font-bold py-2 my-4 border border-white border-opacity-20 text-center text-white bg-gradient-to-br  from-cblue2 via-cblue2 to-blue-500   '>
                 ${(usdCosts[1]*MonthFractions[monthInd]*MonthNums[monthInd]).toFixed(2)}
-                <p>usdc/month</p>
+                <p>usdc</p>
               </div>
             </button>
             <button onClick={() => {buttonHandler(usdCosts[2], MonthFractions[monthInd], MonthNums[monthInd], "usdc", "premium")}} disabled={isButtonDisabled}>
               <div className=' lg:block hidden  rounded-xl py-2 text-xl my-4 border border-white border-opacity-20 text-center text-white bg-gradient-to-t  from-gr1 via-gr2 to-gr3  '>
                 ${(usdCosts[2]*MonthFractions[monthInd]*MonthNums[monthInd]).toFixed(2)}
-                <p>usdc/month</p>
+                <p>usdc</p>
               </div>
             </button>
           </div>
@@ -460,19 +460,19 @@ export default function Subscribe({conversions, abe_guild_data_db, guild_id, gui
             <button onClick={() => {buttonHandler(ethCosts[0], MonthFractions[monthInd], MonthNums[monthInd], "eth", "basic")}} disabled={isButtonDisabled}>
               <div className=' lg:block hidden  rounded-xl py-2 text-xl my-4 border border-white border-opacity-20 text-center text-white bg-gradient-to-t  from-gr1 via-gr2 to-gr3  '>
                 {(ethCosts[0]*MonthFractions[monthInd]*MonthNums[monthInd]).toFixed(2)}
-                <p>eth/month</p>
+                <p>eth</p>
               </div>
             </button>
             <button onClick={() => {buttonHandler(ethCosts[1], MonthFractions[monthInd], MonthNums[monthInd], "eth", "standard")}} disabled={isButtonDisabled}>
               <div className=' lg:block hidden  rounded-xl text-2xl font-bold py-2 my-4 border border-white border-opacity-20 text-center text-white bg-gradient-to-br  from-cblue2 via-cblue2 to-blue-500   '>
                 {(ethCosts[1]*MonthFractions[monthInd]*MonthNums[monthInd]).toFixed(2)}
-                <p>eth/month</p>
+                <p>eth</p>
               </div>
             </button>
             <button onClick={() => {buttonHandler(ethCosts[2], MonthFractions[monthInd], MonthNums[monthInd], "eth", "premium")}} disabled={isButtonDisabled}>
               <div className=' lg:block hidden  rounded-xl py-2 text-xl my-4 border border-white border-opacity-20 text-center text-white bg-gradient-to-t  from-gr1 via-gr2 to-gr3  '>
                 {(ethCosts[2]*MonthFractions[monthInd]*MonthNums[monthInd]).toFixed(2)}
-                <p>eth/month</p>
+                <p>eth</p>
               </div>
             </button>
           </div>
