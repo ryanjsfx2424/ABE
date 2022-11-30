@@ -35,6 +35,7 @@ const allowlistedDiscordIds = ["855616810525917215", // TheLunaLabs
                                "362865355833475072", // from cryptophrank NFTNate; 2022-11-24 13:30a PST
                                "563729224352006163", // from cryptophrank lordmarlborough; 2022-11-18 6:30a PST
                                "280799503454306304", // from cryptophrank natentate; 2022-11-18 6:30a PST
+                               "696648129658880020", // aray.eth (alpha gems); 2022-12-01 00:25a CET
                                //"904305352990933003", // JB
                               ] // main, JB
 
