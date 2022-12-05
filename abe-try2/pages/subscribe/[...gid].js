@@ -45,6 +45,10 @@ export async function getServerSideProps() {
 export default function Settings({channels, conversions, abe_guild_data_db}) {
     var {data: session} = useSession()
 
+    const router = useRouter()
+    let { gid } = router.query
+    let guildName
+
     // console.log("session9: ", session)
     // console.log("isConnected: ", isConnected)
     // console.log("44 index abe_guild_data_db: ", abe_guild_data_db)
@@ -58,10 +62,6 @@ export default function Settings({channels, conversions, abe_guild_data_db}) {
         // console.log("allowlistedDiscordIds: ", allowlistedDiscordIds)
         console.log("userData.id: ", userData.id)
         const userid = userData.id;
-
-        const router = useRouter()
-        let { gid } = router.query
-        let guildName
         
         let subscribed = false
         if (router.query && router.query !== {}) {
