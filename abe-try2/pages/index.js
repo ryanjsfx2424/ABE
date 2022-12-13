@@ -38,7 +38,7 @@ const allowlistedDiscordIds = ["855616810525917215", // TheLunaLabs
                                "696648129658880020", // aray.eth (alpha gems); 2022-12-01 00:25a CET
                                "894403880442544158", // LiamDnft friend of NFTNate's; 2022-12-02 19:00 PST
                                "615175395443998720", // Nuss NFTThunder; 2022-12-04 13:15 PST
-                               "1002054070128881705", // PB from cryptpophrank; 2022-12-04 17:35 PST
+                               "548495338550329365", // Danto from cryptpophrank; 2022-12-12 16:35 PST
                                //"904305352990933003", // JB
                               ] // main, JB
 
