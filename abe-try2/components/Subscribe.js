@@ -23,6 +23,12 @@ import {
 import ClipLoader from "react-spinners/ClipLoader";
 import Header from '../components/Header';
 
+const trial_allowlist = [
+  "696648129658880020", // aray.eth from Alpha Gems
+  "855616810525917215",
+  "548495338550329365" // 2022-12-13
+]
+
 // const CHAIN_ID = 5
 const CHAIN_ID = 1
 // const CHAIN_NAME = "GOERLI"
@@ -55,7 +61,7 @@ export default function Subscribe({conversions, abe_guild_data_db, guild_id, gui
   let MonthTexts = ["1 Month", "3 Months (5% off)", "6 Months (10% off)", "9 Months (15% off)", "12 Months (20% off)"]
   let MonthFractions = [1, 0.95, 0.9, 0.85, 0.8]
   let MonthNums = [1, 3, 6, 9, 12]
-  if (userid === "696648129658880020" || (userid === "855616810525917215")) { // aray.eth from Alpha Gems
+  if (trial_allowlist.includes(userid)) {
     MonthTexts = ["1 Month", "3 Months (5% off)", "6 Months (10% off)", "9 Months (15% off)", "12 Months (20% off)", "Trial"]
     MonthFractions = [1, 0.95, 0.9, 0.85, 0.8, 0.0]
     MonthNums = [1, 3, 6, 9, 12, 0]
