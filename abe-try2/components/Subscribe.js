@@ -26,7 +26,7 @@ import Header from '../components/Header';
 const trial_allowlist = [
   "696648129658880020", // aray.eth from Alpha Gems
   "855616810525917215",
-  "548495338550329365" // 2022-12-13
+  "548495338550329365" // 2022-12-13 from Luna
 ]
 
 // const CHAIN_ID = 5
