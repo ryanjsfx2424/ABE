@@ -58,14 +58,21 @@ export default function Subscribe({conversions, abe_guild_data_db, guild_id, gui
   const usdCosts = [100, 250, 300]
   const usdCostsToNames = {100:"Basic", 250:"Standard", 300:"Premium"}
 
-  let MonthTexts = ["1 Month", "3 Months (5% off)", "6 Months (10% off)", "9 Months (15% off)", "12 Months (20% off)"]
-  let MonthFractions = [1, 0.95, 0.9, 0.85, 0.8]
-  let MonthNums = [1, 3, 6, 9, 12]
-  if (trial_allowlist.includes(userid)) {
-    MonthTexts = ["1 Month", "3 Months (5% off)", "6 Months (10% off)", "9 Months (15% off)", "12 Months (20% off)", "Trial"]
-    MonthFractions = [1, 0.95, 0.9, 0.85, 0.8, 0.0]
-    MonthNums = [1, 3, 6, 9, 12, 0]
-  }
+  // BELOW IS TO ALLOWLIST TRIALS
+
+  // let MonthTexts = ["1 Month", "3 Months (5% off)", "6 Months (10% off)", "9 Months (15% off)", "12 Months (20% off)"]
+  // let MonthFractions = [1, 0.95, 0.9, 0.85, 0.8]
+  // let MonthNums = [1, 3, 6, 9, 12]
+  // if (trial_allowlist.includes(userid)) {
+  //   MonthTexts = ["1 Month", "3 Months (5% off)", "6 Months (10% off)", "9 Months (15% off)", "12 Months (20% off)", "Trial"]
+  //   MonthFractions = [1, 0.95, 0.9, 0.85, 0.8, 0.0]
+  //   MonthNums = [1, 3, 6, 9, 12, 0]
+  // }
+
+  // back to letting anyone sign up for a trial
+  let MonthTexts = ["1 Month", "3 Months (5% off)", "6 Months (10% off)", "9 Months (15% off)", "12 Months (20% off)", "Trial"]
+  let MonthFractions = [1, 0.95, 0.9, 0.85, 0.8, 0.0]
+  let MonthNums = [1, 3, 6, 9, 12, 0]
 
   let ethCosts = []
   for (var ii = 0; ii < usdCosts.length; ii++) {
